@@ -4,6 +4,7 @@ const bodyParser = require("body-parser")
 
 const app = express();
 
+//Database Connectivity
 mongoose.connect("mongodb+srv://admin123:admin123@cluster0.ryswnrs.mongodb.net/",{useNewUrlParser:true,useUnifiedTopology:true}).then(()=>{
     console.log("Data Base is Connected Successfully")
     
