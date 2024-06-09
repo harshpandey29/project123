@@ -65,6 +65,27 @@ app.put("/api/v1/product/:id",async(req,res)=>{
     })
 })
 
+//delete
+app.delete("/api/v1/product/:id",async(req,res)=>{
+
+    const product2 = await product.findById(req.params.id);
+    if(!product2){
+        return res.status(500).json({
+            sucess:false,
+            message:"Not found"
+        })
+    }
+    
+    await product2.deleteOne();
+
+     res.status(200).json({
+        sucess:true,
+        message:"deleted sucessfully"
+    })
+
+})
+
+
 app.listen(4500,()=>{
     console.log("Local Host Connected @ http://localhost:4500");
 })
