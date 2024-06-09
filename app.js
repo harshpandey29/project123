@@ -34,5 +34,5 @@ app.post("/api/v1/product/new",async(req,res)=>{
 
 
 app.listen(4500,()=>{
-    console.log("vicky is chutiya boy http://localhost:4500");
+    console.log("vicky is a good boy  http://localhost:4500");
 })
