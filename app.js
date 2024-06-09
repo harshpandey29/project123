@@ -1,11 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
+require('dotenv').config();
 const bodyParser = require("body-parser")
 
 const app = express();
-
+const PORT = process.env.PORT;
+const DB_MONGOOSE = process.env.DB_MONGOOSE;
 //Database Connectivity
-mongoose.connect("mongodb+srv://admin123:admin123@cluster0.ryswnrs.mongodb.net/",{useNewUrlParser:true,useUnifiedTopology:true}).then(()=>{
+mongoose.connect(DB_MONGOOSE,{useNewUrlParser:true,useUnifiedTopology:true}).then(()=>{
     console.log("Data Base is Connected Successfully")
     
 }).catch((err)=>{
@@ -86,6 +88,6 @@ app.delete("/api/v1/product/:id",async(req,res)=>{
 })
 
 
-app.listen(4500,()=>{
+app.listen(PORT,()=>{
     console.log("Local Host Connected @ http://localhost:4500");
 })
