@@ -5,7 +5,7 @@ const bodyParser = require("body-parser")
 const app = express();
 
 mongoose.connect("mongodb+srv://admin123:admin123@cluster0.ryswnrs.mongodb.net/",{useNewUrlParser:true,useUnifiedTopology:true}).then(()=>{
-    console.log("db connected")
+    console.log("Data Base is Connected Successfully")
     
 }).catch((err)=>{
     console.log(err)
@@ -42,6 +42,28 @@ app.get("/api/v1/products",async(req,res)=>{
     })
 })
 
+//Update-putrequest
+
+app.put("/api/v1/product/:id",async(req,res)=>{
+
+    let product1 = await product.findById(req.params.id);
+
+    product1 = await product.findByIdAndUpdate(req.params.id,req.body,{
+        new:true,
+        useFindAndModify:true,
+        runValidator:true
+    
+    });
+
+    const products = await product.find();
+
+
+    res.status(200).json({
+        sucess:true,
+        products
+    })
+})
+
 app.listen(4500,()=>{
-    console.log("vicky is a good boy  http://localhost:4500");
+    console.log("Local Host Connected @ http://localhost:4500");
 })
